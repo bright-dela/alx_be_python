@@ -1,4 +1,4 @@
-def perform_operation(num1, num2, operation: str):
+def perform_operation(num1, num2, operation):
     if operation == "add":
         return num1 + num2
     elif operation == "subtract":
@@ -12,5 +12,3 @@ def perform_operation(num1, num2, operation: str):
             return num1 / num2
 
 
-if __name__ == "__main__":
-    print(perform_operation(1, 78, "Add"))
