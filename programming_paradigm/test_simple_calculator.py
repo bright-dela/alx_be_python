@@ -3,27 +3,43 @@ from simple_calculator import SimpleCalculator
 
 
 class TestSimpleCalculator(unittest.TestCase):
-    def test_add_two_numbers(self):
-        add_numbers = SimpleCalculator()
-        result = add_numbers.add(10, 5)
-        self.assertEqual(result, 15)
+    def setUp(self):
+        self.calc = SimpleCalculator()
 
-    def test_subtract_two_numbers(self):
-        subtract_numbers = SimpleCalculator()
-        result = subtract_numbers.subtract(10, 5)
-        self.assertEqual(result, 5)
+    def test_addition(self):
+        self.assertEqual(self.calc.add(8, 5), 13)
+        self.assertEqual(self.calc.add(-8, 5), -3)
+        self.assertEqual(self.calc.add(8, -5), 3)
+        self.assertEqual(self.calc.add(-8, -5), -13)
+        self.assertEqual(self.calc.add(0, 0), 0)
 
-    def test_multiply_two_numbers(self):
-        multiply_numbers = SimpleCalculator()
-        result = multiply_numbers.multiply(10, 5)
-        self.assertEqual(result, 50)
+    def test_subtraction(self):
+        self.assertEqual(self.calc.subtract(8, 5), 3)
+        self.assertEqual(self.calc.subtract(-5, 8), -13)
+        self.assertEqual(self.calc.subtract(8, -5), 13)
+        self.assertEqual(self.calc.subtract(0, -5), 5)
+        self.assertEqual(self.calc.subtract(0, 5), -5)
+        self.assertEqual(self.calc.subtract(-8, -5), -3)
+        self.assertEqual(self.calc.subtract(0, 0), 0)
 
-    def test_divide_two_numbers_with_non_zero_denominator(self):
-        multiply_numbers = SimpleCalculator()
-        result = multiply_numbers.divide(10, 5)
-        self.assertEqual(result, 2)
+    def test_multiplication(self):
+        self.assertEqual(self.calc.multiply(8, 5), 40)
+        self.assertEqual(self.calc.multiply(-5, 8), -40)
+        self.assertEqual(self.calc.multiply(8, -5), -40)
+        self.assertEqual(self.calc.multiply(0, -5), 0)
+        self.assertEqual(self.calc.multiply(0, 5), 0)
+        self.assertEqual(self.calc.multiply(-8, -5), 40)
+        self.assertEqual(self.calc.multiply(0, 0), 0)
 
-    def test_divide_two_numbers_with_zero_as_denominator(self):
-        multiply_numbers = SimpleCalculator()
-        result = multiply_numbers.divide(10, 0)
-        self.assertEqual(result, None)
+    def test_division(self):
+        self.assertEqual(self.calc.divide(8, 5), 1.6)
+        self.assertEqual(self.calc.divide(-5, 8), -0.625)
+        self.assertEqual(self.calc.divide(8, -5), -1.6)
+        self.assertEqual(self.calc.divide(0, -5), 0)
+        self.assertEqual(self.calc.divide(0, 5), 0)
+        self.assertEqual(self.calc.divide(-8, -5), 1.6)
+        self.assertEqual(self.calc.divide(0, 0), None)
+        self.assertEqual(self.calc.divide(5, 0), None)
+        self.assertEqual(self.calc.divide(-5, 0), None)
+
+    
