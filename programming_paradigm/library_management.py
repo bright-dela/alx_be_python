@@ -1,16 +1,16 @@
 class Book:
 
-    def __init__(self, title, author, is_checked_out=False) -> None:
+    def __init__(self, title, author, is_checked_out=False):
         self.title = title
         self.author = author
         self._is_checked_out = is_checked_out
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.title} by {self.author}"
 
 
 class Library:
-    def __init__(self) -> None:
+    def __init__(self):
         self._books = []
 
     def add_book(self, book):
